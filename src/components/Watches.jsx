@@ -39,6 +39,15 @@ const handleSubmit=(e)=>{
 else {
     setWatches((prevTrains)=>[...prevTrains, newWatch]);
   }
+  setForm({
+    id:'',
+    name:'',
+    time:0,
+  })
+}
+
+const deleteWatch=(id)=>{
+  setWatches((prevWatches)=>prevWatches.filter(item=>item.id!==id))
 }
   return (
     <div>
@@ -50,7 +59,8 @@ else {
 
       {
         watches.map(watch=>{
-            return <Watch key={watch.id} item={watch}/>
+            console.log(watch)
+            return <Watch key={watch.id} item={watch} remove={deleteWatch}/>
         })
       }
     </div>
